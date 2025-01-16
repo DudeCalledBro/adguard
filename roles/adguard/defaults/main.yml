@@ -1,0 +1,7 @@
+# Specifies the adguard docker image to be used.
+adguard_docker_image: "adguard/adguardhome:latest"
+
+# Specifies the adguard path, owner and group.
+adguard_docker_path: /opt/adguard
+adguard_docker_owner: root
+adguard_docker_group: root

@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+---
+services:
+  adguard:
+    image: "{{ adguard_docker_image }}"
+    container_name: adguard
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "10"
+    network_mode: host
+    volumes:
+    - "/etc/localtime:/etc/localtime:ro"
+    - "{{ adguard_docker_path }}/conf:/opt/adguardhome/conf:rw"
+    - "{{ adguard_docker_path }}/work:/opt/adguardhome/work:rw"

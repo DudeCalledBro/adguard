@@ -1,0 +1,3 @@
+repository:
+  description: "Ansible Playbooks for Automating Adguard Home Deployment."
+  topics: ansible, automation, docker-compose, adguard

@@ -1,0 +1,2 @@
+# Specifies the adguard docker image to be used.
+adguard_docker_image: "adguard/adguardhome:latest"

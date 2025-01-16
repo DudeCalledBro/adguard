@@ -1,0 +1,37 @@
+- name: Create adguard directory
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    owner: "{{ adguard_docker_owner }}"
+    group: "{{ adguard_docker_group }}"
+    state: directory
+    mode: "{{ item.mode }}"
+  loop:
+  - {path: "{{ adguard_docker_path }}", mode: "0755"}
+  - {path: "{{ adguard_docker_path }}/conf", mode: "0700"}
+  - {path: "{{ adguard_docker_path }}/work", mode: "0700"}
+  loop_control:
+    label: "{{ item.path }}"
+
+- name: Create adguard docker compose file
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ adguard_docker_path }}/docker-compose.yml"
+    owner: "{{ adguard_docker_owner }}"
+    group: "{{ adguard_docker_group }}"
+    trim_blocks: false
+    mode: 0644
+  notify: restart adguard
+
+- name: Validate docker compose file
+  ansible.builtin.command: docker compose config --quiet
+  args:
+    chdir: "{{ adguard_docker_path }}"
+  changed_when: false
+
+- name: Startup container
+  ansible.builtin.command: >-
+    docker compose --ansi never --progress plain up --detach
+  args:
+    chdir: "{{ adguard_docker_path }}"
+  register: adguard_container_startup
+  changed_when: "'Started' in adguard_container_startup.stdout"

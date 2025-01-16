@@ -1,0 +1,4 @@
+all:
+  hosts:
+    adguard.home.arpa:
+      ansible_user: pi
