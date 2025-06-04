@@ -1,6 +1,13 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "regexManagers": [
+    {
+      "fileMatch": ["^config\\.yml$"],
+      "matchStrings": [
+        "adguard_docker_image:\\s*(?<depName>adguard/adguardhome):(?<currentValue>v?[0-9.]+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker",
+      "depNameTemplate": "{{depName}}"
+    }
   ]
 }
