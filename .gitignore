@@ -1,10 +1,5 @@
-# Ignore all YAML files in inventories, but track specific ones.
-inventories/*.yml
-!inventories/example.hosts.yml
-
-# Ignore all YAML files in group_vars, but track specific ones.
-inventories/group_vars/*.yml
-!inventories/group_vars/example.all.yml
+# Ignore inventory.yml
+inventory.yml
 
 # Ansible retry files
 *.retry

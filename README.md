@@ -11,40 +11,15 @@ In this repository, I am developing and refining the Ansible code for deploying 
 
 ## Setup
 
-Follow these steps to set up your automated Adguard Home deployment:
+Before running the playbook, you'll need to configure the deployment by setting up the necessary inventory and configuration files.
 
-### Setting Up Your Inventory
-
-1. Navigate to the inventories directory:
+1. Copy the example inventory file to `inventory.yml`:
 
     ```bash
-    cd inventories
+    cp example.inventory.yml inventory.yml
     ```
 
-2. Create a copy of the example hosts file:
-
-    ```bash
-    cp example.hosts.yml hosts.yml
-    ```
-
-3. Edit the `hosts.yml` file to match your homelab setup:
-
-    ```bash
-    vim hosts.yml
-    ```
-
-    Customize the file according to your network layout. For example:
-
-    ```yaml
-    all:
-      hosts:
-        server1:
-          ansible_host: 192.168.1.10
-    ```
-
-    **Notice!** Customize your deployment by overriding default role settings in group or host-specific variable files to precisely configure your Adguard Home setup.
-
-4. Run the Ansible playbook to deploy Adguard:
+2. Run the Ansible playbook to deploy Adguard:
 
     ```bash
     ansible-playbook main.yml
