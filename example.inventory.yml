@@ -1,6 +1,6 @@
 ---
 all:
   hosts:
-    jellyfin.local:
+    adguard.local:
       ansible_user: pi
       ansible_become: true
