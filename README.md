@@ -47,7 +47,7 @@ Follow these steps to set up your automated Adguard Home deployment:
 4. Run the Ansible playbook to deploy Adguard:
 
     ```bash
-    ansible-playbook play-adguard.yml
+    ansible-playbook main.yml
     ```
 
 ## License

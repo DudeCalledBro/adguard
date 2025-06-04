@@ -1,0 +1,16 @@
+---
+- name: Setup AdGuard
+  hosts: all
+  gather_facts: false
+
+  vars_files:
+    - config.yml
+
+  tasks:
+    - name: Manage AdGuard deployment
+      ansible.builtin.include_role:
+        name: adguard
+    
+    - name: Configure resolvconf
+      ansible.builtin.include_role:
+        name: resolvconf
