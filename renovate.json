@@ -1,4 +1,6 @@
 {
+  "dependencyDashboard": false,
+  "semanticCommits": true,
   "regexManagers": [
     {
       "fileMatch": ["^config\\.yml$"],
